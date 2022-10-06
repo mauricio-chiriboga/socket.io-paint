@@ -71,10 +71,14 @@ const server = require('http').Server(app);
 const io = require('socket.io')(server);
 //-- PUERTO
 const port = process.env.PORT || 3000;
-//-- 
-const join = require("path").join;
 //-- DIRECTORIO WEB
+const join = require("path").join;
 app.use(express.static(join(__dirname, "../public"))); 
+
+//-- SERVER EN ESCUCHA DE EVENTOS
+server.listen(port, () => {
+  console.log(`Socket.IO server running at http://localhost:${port}/`);
+});
 
 //-- EVENTOS COMUNICACION
 io.on('connection', (socket) => {
@@ -83,10 +87,7 @@ io.on('connection', (socket) => {
   });
 });
 
-//-- SERVER EN ESCUCHA DE EVENTOS
-server.listen(port, () => {
-  console.log(`Socket.IO server running at http://localhost:${port}/`);
-});
+
 
 
 //-- LO QUE FUNCIONA
