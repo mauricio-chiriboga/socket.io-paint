@@ -64,15 +64,20 @@ console.log("Socket server is running on "+PORT);
 //--------------------------------------------
 */
 
-const app = require('express')();
+const express = require("express"); 
+const app = express();
+
+//const app = require('express')(); 
 const http = require('http').Server(app);
 const io = require('socket.io')(http);
 const port = process.env.PORT || 3000;
-
+const join = require("path").join;
+/*
 app.get('/', (req, res) => {
-  res.sendFile(__dirname + '../index.html');
+  res.sendFile(join(__dirname, "../public/index.html"));
 });
-
+*/
+app.use(express.static(join(__dirname, "../public"))); 
 io.on('connection', (socket) => {
   socket.on('mouse', msg => {
     io.emit('mouse', msg);
