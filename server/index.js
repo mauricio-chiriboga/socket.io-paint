@@ -70,7 +70,7 @@ const app = express();
 const SocketServer = require("socket.io");
 const http = require("http");
 
-const server = http.createServer(app);
+const server = http.Server(app);
 const io = new SocketServer(server);
 //-----
 
