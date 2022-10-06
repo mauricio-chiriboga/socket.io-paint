@@ -67,16 +67,18 @@ console.log("Socket server is running on "+PORT);
 const express = require("express");  
 const app = express();
 //-----
+/*
 const socketServer = require("socket.io");
 const http = require("http");
 
 const server = http.Server(app);
 const io = new socketServer(server);
+*/
 //-----
 
 
-//const server = require('http').Server(app);
-//const io = require('socket.io')(server);
+const server = require('http').Server(app);
+const io = require('socket.io')(server);
 //--
 const port = process.env.PORT || 3000;
 const join = require("path").join;
