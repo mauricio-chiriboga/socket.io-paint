@@ -80,7 +80,7 @@ const io = new socketServer(server);
 const server = require('http').Server(app);
 const io = require('socket.io')(server);
 //--
-const PORT = process.env.PORT || 3000;
+const port = process.env.PORT || 3000;
 const join = require("path").join;
 
 app.use(express.static(join(__dirname, "../public"))); 
@@ -92,7 +92,7 @@ io.on('connection', (socket) => {
 });
 
 
-server.listen(PORT, () => {
+server.listen(port, () => {
   console.log(`Socket.IO server running at http://localhost:${port}/`);
 });
 
