@@ -1,4 +1,4 @@
-
+/*
 //===================================================
 //-- PARA IMPORTAR Y NO USAR REQUIRE
 //   SE AGRAGA "type": "module" AL package.json 
@@ -42,12 +42,7 @@ const io = new SocketServer(server);
 app.use(express.static(join(__dirname, "../public")));   
 //--------------------------------------------
 
-/*
-io.on("connection", (socket) => {
-    console.log("new connection: "+socket.id); 
-});
 
-*/
 io.on("connection", newConnection);
 function newConnection(socket) {
     console.log("new connection: "+socket.id); 
@@ -67,3 +62,24 @@ server.listen(PORT);
 //console.log("Server2 on port", PORT);
 console.log("Socket server is running on "+PORT);  
 //--------------------------------------------
+*/
+
+const app = require('express')();
+const http = require('http').Server(app);
+const io = require('socket.io')(http);
+const port = process.env.PORT || 3000;
+
+app.get('/', (req, res) => {
+  res.sendFile(__dirname + '../index.html');
+});
+
+io.on('connection', (socket) => {
+  socket.on('mouse', msg => {
+    io.emit('mouse', msg);
+  });
+});
+
+//http.listen(port, () => {
+http.listen(port, () => {
+  console.log(`Socket.IO server running at http://localhost:${port}/`);
+});
