@@ -1,24 +1,12 @@
-//import io from "socket.io-client";
 
-let socket = io(); // = io()  = io.connect()    "https://socket-io-paint-magratea.vercel.app/"
+
+let socket = io(); 
 function setup() {
     let anchoWin = (window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth);
 	let altoWin = (window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight);
     createCanvas(anchoWin*0.987, altoWin*0.82); 
     background(51);
 
-    //socket = io.connect("http://localhost:3000");
-    /*
-    socket = io("http://localhost:3002", {
-        withCredentials: true,
-        extraHeaders: {
-          "my-custom-header": "abcd"
-        }
-    });
-    */
-    //socket = io("http://localhost:4000");
-    //socket = io();
-    //socket = io("https://socket-io-paint-magratea.vercel.app", { transports : ['websocket'] });
     socket.on("mouse", newDrawing);
 }
 
