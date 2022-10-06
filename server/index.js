@@ -23,7 +23,7 @@ colors.setTheme({
   error: 'red'
 });
 //-- MODULO DE SERVIDOR MEJORADO
-const express = require("express");  
+const express = require("express");
 const app = express();
 app.use(morgan("tiny"));
 //-- MODULO DE COMUNICACION
