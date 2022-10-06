@@ -1,10 +1,25 @@
+
+
+module.exports.PORT =  process.env.PORT || 3000;
+
+/*
 const config = {};
-// export const PORT =  process.env.PORT || 3000;
+//--------------------------------------------
 const PORT =  process.env.PORT || 3000;
 
 
+//--------------------------------------------
 config.PORT = PORT;
-
 module.exports = config;
+//--------------------------------------------
+//=============================================
+///-- SE LO LLAMA CON:
+//-- const config = require("./config.js");
+//=============================================
+*/
+
+
+
+
 
 // "type": "module",

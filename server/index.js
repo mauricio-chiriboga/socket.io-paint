@@ -30,7 +30,7 @@ app.use(morgan("tiny"));
 const server = require('http').Server(app);
 const io = require('socket.io')(server);
 //-- PUERTO
-const config = require("./config.js");
+const PORT = require("./config.js").PORT;
 //const PORT = process.env.PORT || 3000;
 //-- DIRECTORIO WEB
 const join = require("path").join;
@@ -39,8 +39,8 @@ app.use(express.static(join(__dirname, "../public")));
 //===================================================
 //-- SERVER EN ESCUCHA DE EVENTOS
 //===================================================
-server.listen(config.PORT, () => {
-    console.log("Socket server is running on "+config.PORT);
+server.listen(PORT, () => {
+    console.log("Socket server is running on "+PORT);
 });
 
 //===================================================
