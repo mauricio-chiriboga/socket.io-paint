@@ -1,6 +1,6 @@
 //import io from "socket.io-client";
 
-let socket; // = io()  = io.connect()    "https://socket-io-paint-magratea.vercel.app/"
+let socket = io(); // = io()  = io.connect()    "https://socket-io-paint-magratea.vercel.app/"
 function setup() {
     let anchoWin = (window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth);
 	let altoWin = (window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight);
@@ -17,7 +17,7 @@ function setup() {
     });
     */
     //socket = io("http://localhost:4000");
-    socket = io();
+    //socket = io();
     //socket = io("https://socket-io-paint-magratea.vercel.app", { transports : ['websocket'] });
     socket.on("mouse", newDrawing);
 }
