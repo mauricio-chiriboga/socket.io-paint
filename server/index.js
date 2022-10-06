@@ -81,10 +81,11 @@ const morgan = require("morgan");
 //-- MODULO COLORS (CONSOLA)
 //-- USO COLORS https://www.npmjs.com/package/colors
 const colors = require('colors'); 
+/*
 colors.setTheme({
   conect: 'yellow',
   error: 'red'
-});
+});*/
 //colors.enable();
 //colors.disable();
 //-- MODULO DE SERVIDOR MEJORADO
@@ -113,7 +114,7 @@ server.listen(port, () => {
 io.on("connection", newConnection);
 
 function newConnection(socket) {
-    console.log("new connection: ".conect, socket.id); 
+    console.log("new connection: ".yellow, socket.id); 
 
     socket.on("mouse", mouse_Msg);
     function mouse_Msg(data) {
