@@ -1,6 +1,7 @@
 
 
 let socket = io(); 
+
 function setup() {
     let anchoWin = (window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth);
 	let altoWin = (window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight);
@@ -19,8 +20,6 @@ function newDrawing(data) {
 }
 
 function mouseDragged(){
-    //console.log(mouseX+", "+mouseY);
-
     let data = {
         id: socket.id,
         x: mouseX,
@@ -28,8 +27,7 @@ function mouseDragged(){
     }
     socket.emit("mouse", data);
 
-    noStroke();
-    fill(255);
+    noStroke(); fill(255);
     ellipse(mouseX, mouseY, 36, 36);
 }
 function draw() {
