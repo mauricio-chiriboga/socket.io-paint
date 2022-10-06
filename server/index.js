@@ -80,8 +80,7 @@ const io = new socketServer(server);
 const server = require('http').Server(app);
 const io = require('socket.io')(server);
 //--
-import {PORT} from "./config.js";
-//const port = process.env.PORT || 3000;
+const PORT = process.env.PORT || 3000;
 const join = require("path").join;
 
 app.use(express.static(join(__dirname, "../public"))); 
