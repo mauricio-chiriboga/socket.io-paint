@@ -37,17 +37,17 @@ const server = http.createServer(app);
 const io = new SocketServer(server);
 //--------------------------------------------
 //app.use(cors()); 
-app.use(morgan("tiny"));
+//app.use(morgan("tiny"));
 //app.use(express.static("public")); 
 app.use(express.static(join(__dirname, "../public")));   
 //--------------------------------------------
 
-
+/*
 io.on("connection", (socket) => {
     console.log("new connection: "+socket.id); 
 });
 
-
+*/
 io.on("connection", newConnection);
 function newConnection(socket) {
     console.log("new connection: "+socket.id); 
