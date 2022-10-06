@@ -63,35 +63,27 @@ server.listen(PORT);
 console.log("Socket server is running on "+PORT);  
 //--------------------------------------------
 */
-
+//-- MODULO DE SERVIDOR MEJORADO
 const express = require("express");  
 const app = express();
-//-----
-/*
-const socketServer = require("socket.io");
-const http = require("http");
-
-const server = http.Server(app);
-const io = new socketServer(server);
-*/
-//-----
-
-
+//-- MODULO DE COMUNICACION
 const server = require('http').Server(app);
 const io = require('socket.io')(server);
-//--
+//-- PUERTO
 const port = process.env.PORT || 3000;
+//-- 
 const join = require("path").join;
-
+//-- DIRECTORIO WEB
 app.use(express.static(join(__dirname, "../public"))); 
 
+//-- EVENTOS COMUNICACION
 io.on('connection', (socket) => {
   socket.on('mouse', msg => {
     io.emit('mouse', msg);
   });
 });
 
-
+//-- SERVER EN ESCUCHA DE EVENTOS
 server.listen(port, () => {
   console.log(`Socket.IO server running at http://localhost:${port}/`);
 });
