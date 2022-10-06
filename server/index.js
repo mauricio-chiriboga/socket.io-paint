@@ -64,6 +64,37 @@ console.log("Socket server is running on "+PORT);
 //--------------------------------------------
 */
 
+const express = require("express");  
+//-----
+//const SocketServer = require("socket.io");
+//const http = require("http");
+
+
+//-----
+const app = express();
+
+//const app = require('express')(); 
+const server = require('http').Server(app);
+const io = require('socket.io')(server);
+const port = process.env.PORT || 3000;
+const join = require("path").join;
+
+app.use(express.static(join(__dirname, "../public"))); 
+
+io.on('connection', (socket) => {
+  socket.on('mouse', msg => {
+    io.emit('mouse', msg);
+  });
+});
+
+
+server.listen(port, () => {
+  console.log(`Socket.IO server running at http://localhost:${port}/`);
+});
+
+
+//-- LO QUE FUNCIONA
+/*
 const express = require("express"); 
 const app = express();
 
@@ -72,11 +103,13 @@ const http = require('http').Server(app);
 const io = require('socket.io')(http);
 const port = process.env.PORT || 3000;
 const join = require("path").join;
-/*
-app.get('/', (req, res) => {
-  res.sendFile(join(__dirname, "../public/index.html"));
-});
-*/
+
+
+//app.get('/', (req, res) => {
+//  res.sendFile(join(__dirname, "../public/index.html"));
+//});
+
+
 app.use(express.static(join(__dirname, "../public"))); 
 io.on('connection', (socket) => {
   socket.on('mouse', msg => {
@@ -88,3 +121,4 @@ io.on('connection', (socket) => {
 http.listen(port, () => {
   console.log(`Socket.IO server running at http://localhost:${port}/`);
 });
+*/
