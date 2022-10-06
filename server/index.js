@@ -30,8 +30,7 @@ app.use(morgan("tiny"));
 const server = require('http').Server(app);
 const io = require('socket.io')(server);
 //-- PUERTO
-const PORT = require("./config.js").PORT;
-//const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 3000;
 //-- DIRECTORIO WEB
 const join = require("path").join;
 app.use(express.static(join(__dirname, "../public")));  
