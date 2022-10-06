@@ -78,7 +78,15 @@ console.log("Socket server is running on "+PORT);
 //===================================================
 //-- MODULO DE TIEMPO DE CARGA (CONSOLA)
 const morgan = require("morgan");
-//const color = require("color");
+//-- MODULO COLORS (CONSOLA)
+//-- USO COLORS https://www.npmjs.com/package/colors
+const colors = require('colors'); 
+colors.setTheme({
+  conect: 'yellow',
+  error: 'red'
+});
+//colors.enable();
+//colors.disable();
 //-- MODULO DE SERVIDOR MEJORADO
 const express = require("express");  
 const app = express();
@@ -105,7 +113,7 @@ server.listen(port, () => {
 io.on("connection", newConnection);
 
 function newConnection(socket) {
-    console.log("new connection: "+socket.id); 
+    console.log("new connection: ".conect, socket.id); 
 
     socket.on("mouse", mouse_Msg);
     function mouse_Msg(data) {
