@@ -63,6 +63,19 @@ server.listen(PORT);
 console.log("Socket server is running on "+PORT);  
 //--------------------------------------------
 */
+
+//===================================================
+//-- PARA IMPORTAR Y NO USAR REQUIRE
+//   SE AGRAGA "type": "module" AL package.json 
+//      const morgan = require('morgan');
+//      const express = require("express");  
+//===================================================
+//  SE EJECUTA CON ...
+//  npm run dev O CON
+//  nodemon server/index.js
+//
+//  http://localhost:4000/
+//===================================================
 //-- MODULO DE SERVIDOR MEJORADO
 const express = require("express");  
 const app = express();
@@ -73,20 +86,29 @@ const io = require('socket.io')(server);
 const port = process.env.PORT || 3000;
 //-- DIRECTORIO WEB
 const join = require("path").join;
-app.use(express.static(join(__dirname, "../public"))); 
+app.use(express.static(join(__dirname, "../public")));  
 
+//===================================================
 //-- SERVER EN ESCUCHA DE EVENTOS
+//===================================================
 server.listen(port, () => {
-  console.log(`Socket.IO server running at http://localhost:${port}/`);
+    console.log("Socket server is running on "+port);
 });
 
+//===================================================
 //-- EVENTOS COMUNICACION
-io.on('connection', (socket) => {
-  socket.on('mouse', msg => {
-    io.emit('mouse', msg);
-  });
-});
+//===================================================
+io.on("connection", newConnection);
 
+function newConnection(socket) {
+    console.log("new connection: "+socket.id); 
+
+    socket.on("mouse", mouse_Msg);
+    function mouse_Msg(data) {
+        io.emit("mouse", data);
+        //console.log(data);  
+    }
+}
 
 
 
