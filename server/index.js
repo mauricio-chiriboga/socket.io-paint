@@ -76,9 +76,13 @@ console.log("Socket server is running on "+PORT);
 //
 //  http://localhost:4000/
 //===================================================
+//-- MODULO DE TIEMPO DE CARGA (CONSOLA)
+const morgan = require("morgan");
+//const color = require("color");
 //-- MODULO DE SERVIDOR MEJORADO
 const express = require("express");  
 const app = express();
+app.use(morgan("tiny"));
 //-- MODULO DE COMUNICACION
 const server = require('http').Server(app);
 const io = require('socket.io')(server);
