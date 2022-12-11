@@ -40,7 +40,7 @@ app.use(express.static(join(__dirname, "../public")));
 //===================================================
 server.listen(PORT, () => {
     console.log("Socket server is running on "+PORT);
-});
+}); 
 
 //===================================================
 //-- EVENTOS COMUNICACION
